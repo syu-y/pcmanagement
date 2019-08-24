@@ -9,8 +9,8 @@ import java.util.List;
 import com.example.pcmanagement.domain.model.User;
 import com.example.pcmanagement.domain.repository.UserRepository;
 
-@Service
 @Transactional
+@Service
 public class UserService{
     @Autowired
 	private UserRepository userRepository;
