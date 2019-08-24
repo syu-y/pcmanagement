@@ -38,22 +38,23 @@ public class PCRegistController {
     @PostMapping("/pcRegister")
     public String postPcRegist(@ModelAttribute @Validated(GroupOrder.class) PcRegisterForm form, BindingResult bindingResult, Model model){
         model. addAttribute("contents", "login/pcRegister::pcRegister_contents");
+        System.out.println(form);
+
         if(bindingResult.hasErrors()){
-            System.out.println("ValidationError");
             System.out.println(form);
             return getPcRegist(form, model);
         }
 
         if(!pcService.checkPC(form.getPcId())){
             System.out.println(form);
+
             PC pc = new PC();
             pc.setPcId(form.getPcId());
-            pc.setType(form.getType());
-
+            pc.setPurpose(form.getPurpose());
             // 日付関連
+            pc.setBuyDate(form.getBuyDate());
             Calendar cal = Calendar.getInstance();
             cal.setTime(form.getBuyDate());
-            pc.setBuyDate(new Date(cal.getTime().getTime()));
             cal.add(Calendar.YEAR, 4);
             pc.setRecycleDate(new Date(cal.getTime().getTime()));
 
@@ -61,7 +62,7 @@ public class PCRegistController {
             //書かなくてもデフォルトでnull
             //pc.setUserName(null);
             //pc.setUserId(null);
-            pc.setState("登録中");
+            pc.setState(form.getState());
             pc.setMaker(form.getMaker());
             pc.setSerial(form.getSerial());
             pc.setMacAddress(form.getMacAddress());

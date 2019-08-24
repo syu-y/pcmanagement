@@ -9,7 +9,7 @@ import javax.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-public class PcRegisterForm {
+public class PcEditForm {
     @NotBlank(groups=ValidGroup1.class)
     private String pcId;
 
@@ -18,6 +18,9 @@ public class PcRegisterForm {
 
     @NotNull(groups=ValidGroup1.class)
     private Date buyDate;
+
+    @NotNull(groups=ValidGroup1.class)
+    private Date recycleDate;
 
     private String userId;
     private String userName;

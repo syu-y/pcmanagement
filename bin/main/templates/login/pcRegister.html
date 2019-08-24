@@ -31,19 +31,20 @@
                 <tr>
                     <th class="active">購入日</th>
                     <td><div class="form-group" th:classappend="${#fields.hasErrors('buyDate')} ? 'has-error' ">
-                        <input type="date" class="form-control" th:field="*{buyDate}">
+                        <input type="date" class="form-control" name="buyDate" id="buyDate" th:field="*{buyDate}">
                         <span class="text-danger" th:if="${#fields.hasErrors('buyDate')}" th:errors="*{buyDate}">エラー</span>
                     </div></td>
                 </tr>
-                <!--
                 <tr>
-                    <th class="active">使用者</th>
-                    <td><div class="form-group" th:classappend="${#fields.hasErrors('userName')} ? 'has-error' ">
-                        <input type="text" class="form-control" th:field="*{userName}" />
-                        <span class="text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">ユーザ名エラー</span>
+                    <th class="active">状態</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('state')} ? 'has-error' ">
+                        <select type="text" class="form-control" th:field="*{state}">
+                            <option value="登録中">登録中</option>
+                            <option value="未使用">未使用</option>
+                        </select>
+                       <span class="text-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}">エラー</span>
                     </div></td>
                 </tr>
-                -->
                 <tr>
                     <th class="active">機種</th>
                     <td><div class="form-group" th:classappend="${#fields.hasErrors('type')} ? 'has-error' ">
@@ -139,6 +140,11 @@
                 </tr>
             </table>
             <button class="btn btn-primary" type="submit">Register</button>
+            <ul>
+                <li th:each="error:${#fields.detailedErrors()}">
+                    <span th:text="${error.message}">Error message</span>
+                </li>
+            </ul>
         </form>
     </div>
 </body>
