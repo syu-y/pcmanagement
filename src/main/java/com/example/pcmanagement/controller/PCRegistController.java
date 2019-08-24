@@ -58,7 +58,9 @@ public class PCRegistController {
             pc.setRecycleDate(new Date(cal.getTime().getTime()));
 
             pc.setPurpose(form.getPurpose());
-            //pc.setUserName(form.getUserName());
+            //書かなくてもデフォルトでnull
+            //pc.setUserName(null);
+            //pc.setUserId(null);
             pc.setState("登録中");
             pc.setMaker(form.getMaker());
             pc.setSerial(form.getSerial());

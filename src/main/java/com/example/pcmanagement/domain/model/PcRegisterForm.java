@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import lombok.Data;
 
 @Data
@@ -27,6 +29,7 @@ public class PcRegisterForm {
     private String serial;
 
     @NotBlank(groups=ValidGroup1.class)
+    @Pattern(regexp="(?:[0-9a-fA-F]{2}\\:){5}[0-9a-fA-F]{2}", groups=ValidGroup2.class)
 	private String macAddress;
 
     @NotBlank(groups=ValidGroup1.class)
@@ -46,5 +49,4 @@ public class PcRegisterForm {
 
     @NotBlank(groups=ValidGroup1.class)
 	private String os;
-
 }

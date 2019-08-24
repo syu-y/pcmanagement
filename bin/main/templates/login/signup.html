@@ -13,7 +13,7 @@
                 <tr>
                     <th class="active col-sm-3">ユーザＩＤ</th>
                     <td><div class="form-group" th:classappend="${#fields.hasErrors('userId')} ? 'has-error' ">
-                        <input type="text" class="form-control" th:field="*{userId}" />
+                        <input type="text" class="form-control" th:field="*{userId}"/>
                         <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">ユーザＩＤエラー</span>
                         <span class="text-danger" th:text="${userIdError}">Error message</span>
                     </div></td>
@@ -36,8 +36,8 @@
                     <th class="active">Permission</th>
                     <td><div class="form-group" th:classappend="${#fields.hasErrors('permission')} ? 'has-error' ">
                         <select type="text" class="form-control" th:field="*{permission}" name="permission">
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="USER">USER</option>
+                                <option value="ADMIN">管理者</option>
+                                <option value="USER">一般ユーザ</option>
                         </select>
                         <span class="text-danger" th:if="${#fields.hasErrors('permission')}" th:errors="*{permission}">権限エラー</span>
                     </div></td>

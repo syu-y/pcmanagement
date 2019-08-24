@@ -2,12 +2,14 @@ package com.example.pcmanagement.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import com.example.pcmanagement.domain.model.PC;
 import com.example.pcmanagement.domain.repository.PCRepository;
 
+@Transactional
 @Service
 public class PCService{
     @Autowired
@@ -25,6 +27,4 @@ public class PCService{
 	public void addPC(PC pc) {
 		pcRepository.save(pc);
 	}
-
-
 }

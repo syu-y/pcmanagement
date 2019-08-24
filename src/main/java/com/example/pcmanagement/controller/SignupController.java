@@ -60,6 +60,6 @@ public class SignupController {
             model.addAttribute("userIdError", "ユーザーIDが重複しています！");
             return getSignUp(form, model);
         }
-        return "redirect:/usrList";
+        return "redirect:/userList";
     }
 }

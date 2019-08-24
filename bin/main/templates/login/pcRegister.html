@@ -21,7 +21,8 @@
                 <tr>
                     <th class="active">用途</th>
                     <td><div class="form-group" th:classappend="${#fields.hasErrors('purpose')} ? 'has-error' ">
-                        <select type="text" class="form-control" th:field="*{purpose}">                                           <option value="R&D">R&D用</option>
+                        <select type="text" class="form-control" th:field="*{purpose}">
+                            <option value="R&D">R&D用</option>
                             <option value="研修用">研修用</option>
                         </select>
                         <span class="text-danger" th:if="${#fields.hasErrors('purpose')}" th:errors="*{purpose}">エラー</span>

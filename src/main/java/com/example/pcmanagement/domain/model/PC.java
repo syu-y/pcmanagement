@@ -16,6 +16,7 @@ public class PC {
 	private Date buyDate;
 	private Date recycleDate;
 	private String purpose;
+	private String userId;
 	private String userName;
 	private String state;
 	private String maker;
@@ -31,13 +32,15 @@ public class PC {
 	public PC() {}
 
 	public PC(String pcId,String type, Date buyDate, Date recycleDate, String purpose,
-		String 	userName, String state, String maker, String serial, String macAddress,
-		String cpu, int score, int memory, String resolution, String graphics, String os) {
+		String userId,String userName, String state, String maker, String serial,
+		String macAddress, String cpu, int score, int memory, String resolution,
+		String graphics, String os) {
 		this.pcId = pcId;
 		this.type = type;
 		this.buyDate = buyDate;
 		this.recycleDate = recycleDate;
 		this.purpose = purpose;
+		this.userId = userId;
 		this.userName = userName;
 		this.state = state;
 		this.maker = maker;
@@ -80,6 +83,12 @@ public class PC {
 	}
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getUserName() {
 		return userName;
