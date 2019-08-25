@@ -23,6 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
             .antMatchers("/login").permitAll()
+            .antMatchers("/signup").hasAuthority("ADMIN")//ユーザ登録画面にはADMIN権限が必要
+            .antMatchers("/pcRegister").hasAuthority("ADMIN")//登録画面にはADMIN権限が必要
+            .antMatchers("/userDetailEdit/**").hasAuthority("ADMIN")//登録画面にはADMIN権限が必要
             .anyRequest().authenticated()
             .and()
             .formLogin()

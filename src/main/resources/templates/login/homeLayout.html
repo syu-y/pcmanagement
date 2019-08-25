@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"></meta>
     <!-- setting for Bootstrp start-->
@@ -22,6 +22,10 @@
             <div class="navbar-header">
                 <a class="navbar-brand" th:href="@{/home}">PC Management System</a>
             </div>
+            <!--
+            <p>ユーザ名<span sec:authentication="name"></span>さん</p>
+            <p>権限:<span sec:authentication="principal.authorities"></span></p>
+            -->
             <form method="post" th:action="@{/logout}">
                 <button class="btn btn-link pull-right navbar-brand" type="submit">ログアウト</button>
             </form>
