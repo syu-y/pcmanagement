@@ -57,6 +57,25 @@
                 </form>
             </div>
         </div>
+        <div>
+            <h1>レンタルログ</h1>
+        </div>
+        <table class="table table-bordered table-hover table-striped">
+            <tr>
+                <th class="infocol-sm-2">ログID</th>
+                <th class="infocol-sm-2">管理番号</th>
+                <th class="infocol-sm-2">ユーザID</th>
+                <th class="infocol-sm-2">開始日</th>
+                <th class="infocol-sm-2">返却日</th>
+            </tr>
+            <tr th:each="log : ${myLogList}">
+                <td th:text="${log.rentalId}"></td>
+                <td th:text="${log.pcId}"></td>
+                <td th:text="${log.userId}"></td>
+                <td th:text="${log.startDate}"></td>
+                <td th:text="${log.endDate}"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

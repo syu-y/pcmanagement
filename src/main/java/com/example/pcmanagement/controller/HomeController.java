@@ -88,6 +88,15 @@ public class HomeController{
             form.setPassword(user.getPassword());
             form.setPermission(user.getPermission());
             model.addAttribute("signupForm", form);
+
+            List<RentalLog> alllogList = rentalLogService.getRentalLogs();
+            List<RentalLog> logList = new ArrayList<>();
+            for(RentalLog log: alllogList){
+                if(log.getUserId().equals(form.getUserId())){
+                    logList.add(log);
+                }
+            }
+            model.addAttribute("myLogList", logList);
         }
         return "login/homeLayout";
     }
@@ -141,6 +150,15 @@ public class HomeController{
             form.setGraphics(pc.getGraphics());
             form.setOs(pc.getOs());
             model.addAttribute("pcEditForm", form);
+
+            List<RentalLog> alllogList = rentalLogService.getRentalLogs();
+            List<RentalLog> logList = new ArrayList<>();
+            for(RentalLog log: alllogList){
+                if(log.getPcId().equals(form.getPcId())){
+                    logList.add(log);
+                }
+            }
+            model.addAttribute("myLogList", logList);
         }
         List<User> userList = userService.getUsers();
         model.addAttribute("userList", userList);
