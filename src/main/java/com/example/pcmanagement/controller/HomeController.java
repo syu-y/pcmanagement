@@ -1,5 +1,6 @@
 package com.example.pcmanagement.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import com.example.pcmanagement.domain.model.PC;
@@ -10,13 +11,13 @@ import com.example.pcmanagement.service.PCService;
 import com.example.pcmanagement.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -26,10 +27,17 @@ public class HomeController{
     UserService userService;
     @Autowired
     PCService pcService;
+    @Autowired
+	PasswordEncoder passwdEncoder;
 
     @GetMapping("/home")
     public String getHome(Model model){
+        Date today = new Date();
         model.addAttribute("contents", "login/home::home_contents");
+        List<PC> pcList = pcService.getPCs();
+        for(PC pc : pcList){
+        }
+        model.addAttribute("pcList", pcList);
         return "login/homeLayout";
     }
     @PostMapping("/logout")
@@ -79,7 +87,8 @@ public class HomeController{
         User user = new User();
         user.setUserId(form.getUserId());
         user.setUserName(form.getUserName());
-        user.setPassword(form.getPassword());
+        //user.setPassword(form.getPassword());
+        user.setPassword(passwdEncoder.encode(form.getPassword()));
         user.setPermission(form.getPermission());
 
         userService.addUser(user);
@@ -135,7 +144,7 @@ public class HomeController{
         System.out.println(form);
 
         //if(form.getUserId() == null && (form.getUserId().length() == 0) ){
-        if(form.getUserId() == null){
+        if(form.getUserId() == null || form.getUserId().length() == 0){
             pc.setUserId(null);
             pc.setUserName(null);
         }

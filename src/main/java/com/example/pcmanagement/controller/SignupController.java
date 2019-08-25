@@ -4,6 +4,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,14 +15,14 @@ import com.example.pcmanagement.domain.model.SignupForm;
 import com.example.pcmanagement.domain.model.User;
 import com.example.pcmanagement.service.UserService;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 @Controller
 public class SignupController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+	PasswordEncoder passwdEncoder;
 
     // Set radioButton to Model object
     @GetMapping("/signup")
@@ -42,7 +43,8 @@ public class SignupController {
             User user = new User();
             user.setUserId(form.getUserId());
             user.setUserName(form.getUserName());
-            user.setPassword(form.getPassword());
+            user.setPassword(passwdEncoder.encode(form.getPassword()));
+            //user.setPassword(form.getPassword());
             user.setPermission(form.getPermission());
             userService.addUser(user);
         }

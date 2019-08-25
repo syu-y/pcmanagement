@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <!-- setting for Bootstrp start-->
+    <link th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+    <!-- setting for Bootstrp end  -->
+    <title> 403 Error </title>
+    <style type="text/css">
+        <!--
+        body {
+            font-family: Osaka,Verdana,Arial,Helvetica,sans-serif;
+            text-align: center;
+            line-height: 150%;
+            font-size: 80%;
+            color: #333333;
+            margin:100px auto 0px auto;
+        }
+        .error_out {
+            margin:0 auto;
+            width:500px;
+            text-align:left;
+            border-color:#990000;
+            border-width:2px;
+            border-style:solid;
+        }
+        .error_left {
+            width:160px;
+            line-height:400%;
+            background:#990000;
+            padding:10px;
+            font-size:150%;
+            font-weight:bold;
+            color:#FFFFFF;
+            text-align:center;
+            float:left;
+        }
+        .error_right {
+            width:290px;
+            margin:15px 10px 10px 10px;
+            text-align:left;
+            float:right;
+        }
+        .home {
+            text-align:right;
+            margin:10px 10px 0 0;
+        }
+        .foot {
+            width:500px;
+            margin:0 auto;
+            padding:10px 10px 5px 10px;
+            text-align:right;
+            font-size:80%;
+        }
+        a:link,a:visited {
+            color: #990000;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #FF0000;
+            text-decoration: underline;
+        }
+        </style>
+</head>
+<body>
+    <div class="error_out">
+        <div class="error_left"><span th:text="${status} + ' ' + ${error}"></span></div>
+        <div class="error_right"><strong>File not found!</strong><br /><br/>
+            <div class="home">>><a th:href ="@{'/logout'}">ログイン画面に戻る</a></div>
+        </div>
+        <br style="clear:both">
+    </div>
+</body>
+</html>
