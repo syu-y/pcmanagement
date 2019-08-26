@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"></meta>
+</head>
+
+<body>
+    <!--=====ホームのコンテンツ部分=====-->
+    <div th:fragment="pcRegister_contents" class="col-sm-2">
+        <div class="page-header"><h1>新規PC登録</h1></div>
+        <form method="post" th:action="@{/pcRegister}" th:object="${pcRegisterForm}" class="form-inline">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th class="active">管理番号</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('pcId')} ? 'has-error' ">
+                        <input type="text" class="form-control" th:field="*{pcId}" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('pcId')}" th:errors="*{pcId}">管理番号エラー</span>
+                        <span class="text-danger" th:text="${pcIdError}">Error message</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">用途</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('purpose')} ? 'has-error' ">
+                        <select type="text" class="form-control" th:field="*{purpose}">
+                            <option value="R&D">R&D用</option>
+                            <option value="研修用">研修用</option>
+                        </select>
+                        <span class="text-danger" th:if="${#fields.hasErrors('purpose')}" th:errors="*{purpose}">エラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">購入日</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('buyDate')} ? 'has-error' ">
+                        <input type="date" class="form-control" name="buyDate" id="buyDate" th:field="*{buyDate}">
+                        <span class="text-danger" th:if="${#fields.hasErrors('buyDate')}" th:errors="*{buyDate}">エラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">状態</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('state')} ? 'has-error' ">
+                        <select type="text" class="form-control" th:field="*{state}">
+                            <option value="登録中">登録中</option>
+                            <option value="未使用">未使用</option>
+                        </select>
+                       <span class="text-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}">エラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">機種</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('type')} ? 'has-error' ">
+                        <select type="text" class="form-control" th:field="*{type}">
+                            <option value="aaaaaaaaaa">aaaaaaaaaaa</option>
+                            <option value="bbbbbbbb">bbbbbbbbb</option>
+                        </select>
+                       <span class="text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}">エラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">メーカー</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('maker')} ? 'has-error' ">                            <input type="text" class="form-control" th:field="*{maker}" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('maker')}" th:errors="*{maker}">メーカーエラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">OS</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('os')} ? 'has-error' ">
+                        <input type="text" class="form-control" th:field="*{os}" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('os')}" th:errors="*{os}">os</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">シリアル番号</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('serial')} ? 'has-error' ">
+                        <input type="text" class="form-control" th:field="*{serial}" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}">シリアル番号エラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">Wi-Fi MACアドレス</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('macAddress')} ? 'has-error' ">
+                        <input type="text" class="form-control" th:field="*{macAddress}"/>
+                        <span class="text-danger" th:if="${#fields.hasErrors('macAddress')}" th:errors="*{macAddress}">アドレスエラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">CPU</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('cpu')} ? 'has-error' ">                             <input type="text" class="form-control" th:field="*{cpu}" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('cpu')}" th:errors="*{cpu}">CPUエラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">PassMark Score</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('score')} ? 'has-error' ">                             <input type="text" class="form-control" th:field="*{score}" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('score')}" th:errors="*{score}">scoreエラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">Memory</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('memory')} ? 'has-error'">
+                        <select type="text" class="form-control" th:field="*{memory}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="8">8</option>
+                            <option value="16">16</option>
+                            <option value="32">32</option>
+                            <option value="64">64</option>
+                    </select>
+                        <span class="text-danger" th:if="${#fields.hasErrors('memory')}" th:errors="*{memory}">メーカーエラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">解像度</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('resolution')} ? 'has-error'">
+                        <select type="text" class="form-control" th:field="*{resolution}">
+                            <option value="854x480">854x480</option>
+                            <option value="960x540">960x540</option>
+                            <option value="1136x640">1136x640</option>
+                            <option value="1280x720">1280x720</option>
+                            <option value="1334x750">1334x750</option>
+                            <option value="1366x768">1366x768</option>
+                            <option value="1600x900">1600x900</option>
+                            <option value="1600x900">1600x900</option>
+                            <option value="1920x1080">1920x1,080</option>
+                            <option value="2560x1440">2560x1440</option>
+                            <option value="1600x900">2880x1620</option>
+                    </select>
+                        <span class="text-danger" th:if="${#fields.hasErrors('resolution')}" th:errors="*{resolution}">解像度エラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">モニター</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('graphics')} ? 'has-error'">
+                        <select type="text" class="form-control" th:field="*{graphics}">
+                            <option value="統合型">統合型</option>
+                            <option value="分離型">分離型</option>
+                    </select>
+                        <span class="text-danger" th:if="${#fields.hasErrors('graphics')}" th:errors="*{graphics}">モニターエラー</span>
+                    </div></td>
+                </tr>
+            </table>
+            <button class="btn btn-primary" type="submit">Register</button>
+            <ul>
+                <li th:each="error:${#fields.detailedErrors()}">
+                    <span th:text="${error.message}">Error message</span>
+                </li>
+            </ul>
+        </form>
+    </div>
+</body>
+</html>

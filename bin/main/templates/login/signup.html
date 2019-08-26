@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"></meta>
+</head>
+
+<body>
+    <!--=====ホームのコンテンツ部分=====-->
+    <div th:fragment="signup_contents" class="col-sm-5">
+        <div class="page-header"><h1>Create new Accout Form</h1></div>
+        <form method="post" th:action="@{/signup}" th:object="${signupForm}">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th class="active col-sm-3">ユーザＩＤ</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('userId')} ? 'has-error' ">
+                        <input type="text" class="form-control" th:field="*{userId}"/>
+                        <span class="text-danger" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">ユーザＩＤエラー</span>
+                        <span class="text-danger" th:text="${userIdError}">Error message</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">Password</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error' ">
+                        <input type="password" class="form-control" th:field="*{password}" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">パスワードエラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">User Name</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('userName')} ? 'has-error' ">
+                        <input type="text" class="form-control" th:field="*{userName}" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">ユーザ名エラー</span>
+                    </div></td>
+                </tr>
+                <tr>
+                    <th class="active">Permission</th>
+                    <td><div class="form-group" th:classappend="${#fields.hasErrors('permission')} ? 'has-error' ">
+                        <select type="text" class="form-control" th:field="*{permission}" name="permission">
+                                <option value="ADMIN">管理者</option>
+                                <option value="USER">一般ユーザ</option>
+                        </select>
+                        <span class="text-danger" th:if="${#fields.hasErrors('permission')}" th:errors="*{permission}">権限エラー</span>
+                    </div></td>
+                </tr>
+            </table>
+            <!--
+            <ul>
+                <li th:each="error:${#fields.detailedErrors()}">
+                    <span th:text="${error.message}">Error message</span>
+                </li>
+            </ul>
+            -->
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

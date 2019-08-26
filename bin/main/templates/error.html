@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <!-- setting for Bootstrp start-->
+    <link th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+    <!-- setting for Bootstrp end  -->
+    <title> Error </title>
+</head>
+    <h1 th:text="${status} + '' + ${error}"></h1>
+    <p th:text="${message}" class="bg-danger"></p>
+    <p class="bg-warning">ログイン画面に戻ってください</p>
+    <form method="POST" th:action="@{/logout}">
+        <button class="btn btn-primary" type="submit">ログイン画面に戻る</button>
+    </form>
+</body>
+</html>

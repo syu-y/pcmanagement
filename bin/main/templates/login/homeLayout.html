@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"></meta>
+    <!-- setting for Bootstrp start-->
+    <link th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+    <!-- setting for Bootstrp end  -->
+
+    <!--CSSの読込-->
+    <link th:href="@{/css/home.css}" rel="stylesheet"></link>
+    <script th:src="@{/static/js/pulldown.js}"></script>
+    <title>Home</title>
+</head>
+
+<body>
+    <!--=====ヘッダー（ナビゲーションバー）=====-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/home}">PC Management System</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                    Welcome, <span sec:authentication="name">Username</span>
+                </div>
+            <form method="post" th:action="@{/logout}">
+                <button class="btn btn-link pull-right navbar-brand" type="submit">ログアウト</button>
+            </form>
+        </div>
+    </nav>
+
+    <!--=====サイドバー=====-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 sidebar">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation"><a th:href ="@{'/pcList'}">PCリスト</a></li>
+                    <li role="presentation"><a th:href ="@{'/pcList'}">PC登録</a></li>
+                    <li role="presentation"><a th:href ="@{'/userList'}">ユーザリスト</a></li>
+                    <li role="presentation"><a th:href ="@{'/signup'}">ユーザ登録</a></li>
+                    <li role="presentation"><a th:href ="@{'/logList'}">ログ閲覧</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== コンテンツ ===== -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2 main">
+                <div th:include="__${contents}__"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
