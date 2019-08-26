@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - PcmanagementApplication",
+            "request": "launch",
+            "mainClass": "com.example.pcmanagement.PcmanagementApplication",
+            "projectName": "pcmanagement"
+        }
+    ]
+}
